@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting Advisor | 360 Management</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { navy: '#0a192f', gold: '#d4af37', teal: '#0d9488', lightbg: '#f8fafc' },
+                    fontFamily: { heading: ['Poppins', 'sans-serif'], body: ['Inter', 'sans-serif'] },
+                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)', 'glow': '0 0 20px rgba(212, 175, 55, 0.4)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        
+        /* Advanced Scroll Animations */
+        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        .reveal-up.active, .reveal-left.active, .reveal-right.active {
+            opacity: 1; transform: translate(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-md py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="h-14 w-14 bg-white rounded-full flex items-center justify-center border-2 border-gold overflow-hidden shadow-sm">
+                        <img src="https://i.ibb.co/0p8y700k/Picsart-26-05-15-17-27-24-648.jpg" alt="360 Management Logo" class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-300" style="mix-blend-mode: multiply;">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl text-navy leading-tight group-hover:text-teal transition-colors">360 Management</span>
+                        <span class="text-xs text-gold font-semibold tracking-wider">Solution Beyond Boundaries</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link font-medium text-gray-600 hover:text-navy transition-colors pb-1 border-b-2 border-transparent hover:border-gold">Home</a>
+                    <a href="Aboutus.html" class="nav-link font-medium text-gray-600 hover:text-navy transition-colors pb-1 border-b-2 border-transparent hover:border-gold">About Us</a>
+                    <a href="services.html" class="nav-link font-medium text-gray-600 hover:text-navy transition-colors pb-1 border-b-2 border-transparent hover:border-gold">Services</a>
+                    <a href="contact.html" class="px-6 py-2.5 bg-navy text-white rounded-full font-medium hover:bg-teal transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Contact Us</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-navy hover:text-teal focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg z-40 top-[80px]">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-navy hover:bg-gray-50">Home</a>
+                <a href="Aboutus.html" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-navy hover:bg-gray-50">About Us</a>
+                <a href="services.html" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-navy hover:bg-gray-50">Services</a>
+                <a href="contact.html" class="mobile-nav-link block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-navy text-white hover:bg-teal">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="flex-grow pt-[80px]">
+        <section class="bg-white pb-24">
+            
+            <!-- Hero -->
+            <div class="py-28 text-center relative overflow-hidden bg-navy">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/7dHMsRZ8/1778060597771.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-navy/85"></div>
+                <div class="relative z-10 max-w-4xl mx-auto px-4 reveal-up">
+                    <div class="w-24 h-24 bg-white/10 backdrop-blur-md text-gold border border-white/20 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-glow transform hover:-translate-y-2 transition-transform"><i class="fas fa-chart-pie"></i></div>
+                    <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">Accounting Advisor</h1>
+                    <p class="text-xl md:text-2xl text-gold font-medium tracking-widest uppercase">Precision in Finance & Corporate Strategy</p>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
+                <div class="bg-white rounded-3xl shadow-xl p-8 md:p-14 border-t-4 border-gold">
+                    <a href="services.html" class="inline-flex items-center gap-2 text-gray-400 hover:text-navy font-bold mb-10 transition-colors reveal-left"><i class="fas fa-arrow-left"></i> Back to Services</a>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+                        <div class="reveal-left">
+                            <h2 class="text-3xl font-black text-navy mb-4 uppercase tracking-wide">About the Brand</h2>
+                            <div class="w-16 h-1.5 bg-gold mb-6 rounded-full"></div>
+                            <p class="text-gray-600 leading-relaxed text-lg font-medium">
+                                Serving as the strategic financial backbone of our ecosystem, Accounting Advisor ensures that our clients maintain impeccable financial health, strict regulatory compliance, and robust corporate governance. We move beyond basic bookkeeping to deliver actionable financial intelligence.
+                            </p>
+                        </div>
+                        <div class="reveal-right">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop" alt="Finance Chart" class="rounded-2xl shadow-lg border border-gray-100">
+                        </div>
+                    </div>
+
+                    <div class="reveal-up">
+                        <h2 class="text-3xl font-black text-navy mb-10 text-center uppercase tracking-wide">Key Services</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                        <!-- Service 1 -->
+                        <div class="p-8 bg-lightbg rounded-2xl border border-gray-100 flex gap-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal-up group">
+                            <div class="w-14 h-14 bg-gold/10 text-gold rounded-xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-gold group-hover:text-white transition-colors"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy mb-2">Accounting & Auditing</h4>
+                                <p class="text-gray-600 font-medium">Meticulous financial accounting and independent statutory auditing services.</p>
+                            </div>
+                        </div>
+                        <!-- Service 2 -->
+                        <div class="p-8 bg-lightbg rounded-2xl border border-gray-100 flex gap-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal-up delay-100 group">
+                            <div class="w-14 h-14 bg-teal/10 text-teal rounded-xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-teal group-hover:text-white transition-colors"><i class="fas fa-hand-holding-usd"></i></div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy mb-2">Tax Planning</h4>
+                                <p class="text-gray-600 font-medium">Strategic tax optimization to minimize liabilities legally and efficiently.</p>
+                            </div>
+                        </div>
+                        <!-- Service 3 -->
+                        <div class="p-8 bg-lightbg rounded-2xl border border-gray-100 flex gap-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal-up group">
+                            <div class="w-14 h-14 bg-navy/10 text-navy rounded-xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-navy group-hover:text-white transition-colors"><i class="fas fa-briefcase"></i></div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy mb-2">Company Secretarial</h4>
+                                <p class="text-gray-600 font-medium">Handling all statutory compliance, filings, and corporate governance matters.</p>
+                            </div>
+                        </div>
+                        <!-- Service 4 -->
+                        <div class="p-8 bg-lightbg rounded-2xl border border-gray-100 flex gap-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal-up delay-100 group">
+                            <div class="w-14 h-14 bg-gold/10 text-gold rounded-xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-gold group-hover:text-white transition-colors"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy mb-2">Strategy Formulation</h4>
+                                <p class="text-gray-600 font-medium">Cost management, business development, and long-term financial modeling.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center reveal-up">
+                        <a href="contact.html" class="inline-flex items-center gap-3 px-10 py-5 bg-navy text-white font-bold rounded-full hover:bg-gold hover:text-navy transition-all duration-300 shadow-xl hover:-translate-y-1 transform uppercase tracking-wider">
+                            Consult with Accounting Advisor
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy pt-16 pb-8 border-t-[6px] border-gold mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-10 w-10 bg-white rounded-full flex items-center justify-center border-2 border-gold overflow-hidden">
+                            <img src="https://i.ibb.co/0p8y700k/Picsart-26-05-15-17-27-24-648.jpg" alt="360 Management Logo" class="h-full w-full object-cover" style="mix-blend-mode: multiply;">
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-white">360 Management</h3>
+                    </div>
+                    <p class="text-gold text-sm font-semibold tracking-wider mb-6">Solution Beyond Boundaries</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-teal hover:text-white transition-colors hover:scale-110 transform"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-teal hover:text-white transition-colors hover:scale-110 transform"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-teal hover:text-white transition-colors hover:scale-110 transform"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400 font-medium">
+                        <li><a href="index.html" class="hover:text-gold transition-colors">Home</a></li>
+                        <li><a href="Aboutus.html" class="hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition-colors">Our Services</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Our Brands</h4>
+                    <ul class="space-y-3 text-gray-400 font-medium">
+                        <li><a href="rewave.html" class="hover:text-gold transition-colors">Rewave Solutions</a></li>
+                        <li><a href="accadvisor.html" class="hover:text-gold transition-colors">Accounting Advisor</a></li>
+                        <li><a href="growthgen.html" class="hover:text-gold transition-colors">Growth Gen</a></li>
+                        <li><a href="hirenowlanka.html" class="hover:text-gold transition-colors">Hire Now Lanka</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm font-medium">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-teal"></i> 22/5, Biyagama Road, Kelaniya, Colombo, Sri Lanka</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-teal"></i> +94 78 989 8498</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-teal"></i> contact@360management.lk</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm font-medium">
+                <p>&copy; <span id="currentYear"></span> Web design & development by Growth Gen | 360 Management (Pvt) Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Action Button -->
+    <a href="https://wa.me/94789898498" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform z-50" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Mobile menu toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if(btn && menu) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            }
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md', 'py-2');
+                    navbar.classList.remove('py-3');
+                } else {
+                    navbar.classList.add('py-3');
+                    navbar.classList.remove('shadow-md', 'py-2');
+                }
+            });
+
+            // Active Links
+            const currentPath = window.location.pathname.split('/').pop() || 'accadvisor.html';
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                    if (link.classList.contains('nav-link')) {
+                        link.classList.add('text-navy', 'border-gold');
+                    } else {
+                        link.classList.add('text-navy', 'bg-gray-50');
+                    }
+                }
+            });
+
+            // Intersection Observer for scroll animations
+            let observer;
+            function initObserver() {
+                if(observer) observer.disconnect();
+                const options = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+                observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, options);
+                document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+            }
+            setTimeout(initObserver, 100);
+        });
+    </script>
+</body>
+</html>
